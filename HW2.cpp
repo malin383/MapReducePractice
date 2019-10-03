@@ -135,6 +135,27 @@ NameCounts countWordsMapReduce(const char* fileName) {
 }
 
 //PROBLEM 3
+struct HashCompareWhiteHouse {
+	//Maps Key to hashcode of type size_t
+	static size_t hash(const string& x) {
+		size_t h = 0;
+		for (const char* s = x.c_str(); *s; ++s) {
+			h = (h * 17) ^ *s;
+		}
+		return h;
+	}
+	static bool equal(const string& x, const string& y) {
+		return x == y;
+	}
+};
+
+typedef concurrent_hash_map<string, string, HashCompareWhiteHouse> WhiteHouseVisits;
+
+int whiteHouseData() {
+	WhiteHouseVisits whv;
+	return 0;
+}
+//Most frequent visitors
 
 
 //Main method
